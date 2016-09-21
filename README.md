@@ -152,3 +152,12 @@ The folder ```positive``` contains all the windows containing pedestrians, extra
 
 **Figure 5:** An example of a 64x128 pedestrian image from the Caltech data set.
 
+###3.2 Machine Learning/Adaboost
+
+###3.3 Hard Negative Mining/Bootstrapping
+
+## Detection
+
+##4.3 Cascade Classification
+
+##4.2 Feature Pyramids
