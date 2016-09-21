@@ -51,7 +51,8 @@ The first step in any classification/detection pipeline is feature extraction, a
 ![Features](/ReadMe Images/features.png)
 **Figure 1:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
 
-While there are many classes of features that can be extracted, a few have emerged as being robust for object detection. Higher-level filtering can be done on these features, as can be seen in the Filtered Channel Features paper, but the core of our pipeline will be the following:
+While there are many classes of features that can be extracted, a few have emerged as being robust for object detection. Higher-level filtering can be done on these features, as can be seen in the Filtered Channel Features paper, but
+the core of our pipeline will be the following:
 
 * LUV Color Space
 * Gradient Magnitude
@@ -60,4 +61,16 @@ While there are many classes of features that can be extracted, a few have emerg
 The code corresponding to this section is primarily located in channel_features.py, with some particular tasks implemented in a cython library grad_hist.pyx. These are mostly simply tasks, like iterating over sections of an image, which are slow in python but can be very efficient in cython.
 
 ###2.1 LUV Color Space
+LUV is an alternative to RGB color space, which apparently has been found to serve as better core features than RGB for object detection problems:
+
+https://en.wikipedia.org/wiki/CIELUV
+
+Like RGB, LUV consists of 3 features per pixel. Open CV has this conversion built in, so all we have to do is call
+
+```img_LUV = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2LUV)```
+
+For some reason Open CV reads in BGR instead of RGB, but so long as the image was loaded using Open CV you shouldn't have to worry about this detail. 
+
+###2.2 Gradient Magnitude
+
 
