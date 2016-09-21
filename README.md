@@ -90,5 +90,5 @@ def compute_grad(img):
 
 
 ###2.3 Oriented Gradients 
-![Features](/readme-images/octagon-512.gif =256x256)
+![Octagon](/readme-images/octagon-512.gif =256x256)
 **Figure 2:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
