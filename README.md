@@ -95,3 +95,16 @@ While there is a great deal of useful information in the gradient magnitude, it 
 ![Octagon](/readme-images/octagon-512.gif)
 
 **Figure 2**
+
+This is where the idea of a Histogram of Oriented Gradient (HOG) feature comes into play. The basic concept is to take a small window of the image, say 4x4 or 8x8, and bin the gradient magnitudes based on their orientation (see Figure 3). For example, if we used 4 bins, then we'd have one for 0, 90, 180, and 270 degrees. Within our 4x4 grid, we would add the gradient magnitude proportionally to its nearest bins. 
+
+For example, if one of the 16 entries in the grad has ```r = 1``` and ```theta = 60```, then we would add .34 to the 0 degrees bin and .66 to the 90 degrees bin. Doing this for each of the entries in the grid, we get a histogram of orentied gradients feature. This is a very compact representation, as the original 4x4 grid had 4x4x2 = 32 floating point numbers, and the HOG has only N numbers (where N is the number of bins).
+
+
+![HOG](/readme-images/hog.png)
+
+**Figure 3:** Histogram of Oriented Gradients on 4x4 grids.
+
+Following the papers mentioned in the introduction, we used 4x4 grids with N  = 6 histograms per histogram.
+
+
