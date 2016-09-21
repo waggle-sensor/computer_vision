@@ -130,5 +130,13 @@ def hog(img):
 
 This starts by using the ```compute_grad()``` function described in section 2.2 to get r and theta values for the entire image. The orientations are then normalized such that they range from 0 to n_bins, instead of from 0 to 2pi. These are then quantized in ```quantize_grad()```, which returns each theta rounded up and down along with a proportional distribution of the corresponding value of r. So far all of these operations can be efficiently computed by taking advantage of numpy's fast array operations. 
 
-The final step, computing the gradient histograms, is what is very slow in native Python. Because we have to iterate over each pixel in each 4x4 grid of an image, then add it to the corresponding histogram, it is essential
+The final step, computing the gradient histograms, is what is very slow in native Python. Because we have to iterate over each pixel in each 4x4 grid of an image, then add it to the corresponding histogram, it is essentially unavoidable to do all this in nested ```for``` loops. To this end, we perform all of these operations in Cython, as can be seen in the grad_hist.pyx file. You shouldn't ever have to edit anything in this file, but it may be worth looking at to get a sense of why some data types are structured the way they are. 
+
+Because we pool on 4x4 grids with 6 bins, the output h as dimensions W/4 x H/4 x 6, where W and H are the width and height of the image, respectively.
+
+###2.4 Feature Aggregation
+It turns out that it is possible to substantially compress the feature space without losing much performance. For example, the six HOG features are already compress based on their 4x4 bins. We can also do something analogous with the three color features and one gradient magnitude feature by simply summing over 4x4 regions of the image, a technique known as sum pooling. In total this reduces the feature space by a factor of 4 x 4 = 16, without sacrificing performance.
+
+##3 Training
+
 
