@@ -60,6 +60,8 @@ the core of our pipeline will be the following:
 
 The code corresponding to this section is primarily located in channel_features.py, with some particular tasks implemented in a cython library grad_hist.pyx. These are mostly simply tasks, like iterating over sections of an image, which are slow in python but can be very efficient in cython.
 
+We compute 10 features per pixel over 64x128x3 images, with sum pooling (described later) that reduces the space by a factor of 16, resulting in a feature vector that has 64 * 128 * 10 / 16 = 5120 features per window. In reality we compute these features for the entire image, and then take 32x64x10 windows in feature space.
+
 ###2.1 LUV Color Space
 LUV is an alternative to RGB color space, which apparently has been found to serve as better core features than RGB for object detection problems:
 
@@ -69,8 +71,19 @@ Like RGB, LUV consists of 3 features per pixel. Open CV has this conversion buil
 
 ```img_LUV = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2LUV)```
 
-For some reason Open CV reads in BGR instead of RGB, but so long as the image was loaded using Open CV you shouldn't have to worry about this detail. 
+For some reason Open CV reads in BGR instead of RGB, but so long as the image was loaded using Open CV you shouldn't have to worry about this detail. This color space seems to be used across a few papers, you could test others but should be safe not changing this aspect of the pipeline.
 
 ###2.2 Gradient Magnitude
+There are many variants on the traditional RGB color space, e.g. HSV, LUV, etc. One of the earliest non-color space features that was focused on in the computer vision community is the image gradient. This allows us to look not at the absolute intensity of a given pixel, but how the intesnity changes from one pixel to the next. Gradients are particular useful because they are (ideally) independent of the background. On an 8-bit color scale, a transition from 5 to 10 will have the same gradient as a change of 205 to 210. Because many images have variable lighting, this invariance can be incredibly valuable. 
 
+In section 2.3 we will discuss oriented gradients, but here we simply discuss the one-dimension feature of gradient magntiude. This can be computed quite simply and efficiently in Open CV using x- and y-oriented gradient computations. The entire function to compute this feature is 
 
+```
+def compute_grad(img):
+    grad_x = cv2.Sobel(img, cv2.CV_32F, 1, 0)
+    grad_y = cv2.Sobel(img, cv2.CV_32F, 0, 1)
+    r, theta = cv2.cartToPolar(grad_x, grad_y)
+    return r, theta
+```
+
+```cv2.Sobel``` computes smoothed x and y gradients, which then are converted to polar coordinates. The ```r``` component of this representation is the pixel-wise gradient magnitude. 
