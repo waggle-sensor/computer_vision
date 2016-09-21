@@ -105,6 +105,27 @@ For example, if one of the 16 entries in the grad has ```r = 1``` and ```theta =
 
 **Figure 3:** Histogram of Oriented Gradients on 4x4 grids.
 
-Following the papers mentioned in the introduction, we used 4x4 grids with N  = 6 histograms per histogram.
+Following the papers mentioned in the introduction, we used 4x4 grids with N  = 6 histograms per histogram. Computing HOG features is substantially more complex than other features mentioned so far, as they cannot be computed from simple array operations in numpy and Open CV. The latter has some functionality to compute these features, however it is poorly documented.
+
+The function to compute HOG features is shown below:
+```
+def hog(img):
+    """
+    :param img: h x w x 1 image
+    :return: histograms of gradients h and magntiude of gradients r
+    Takes in an w x h x 1 image (generally first layer in LUV color space) and return
+    gradient magnitude r and and histogram of gradients h.
+    """
+    cell_x = np.int64(4)
+    cell_y = np.int64(4)
+    n_bins = np.int64(6)
+
+    r, theta = compute_grad(img)
+    t_bin = n_bins * theta / (2 * np.pi)
+    tf, tc, rf, rc = quantize_grad(r, t_bin, n_bins)
+    h = grad_hist.grad_hist(tf, tc, rf, rc, cell_x, cell_y, n_bins)
+
+    return h, r
+```
 
 
