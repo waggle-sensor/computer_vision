@@ -128,5 +128,5 @@ def hog(img):
     return h, r
 ```
 
-This starts by using the ```compute_grad()``` function described in section 2.2 to get ```r``` and ```theta``` values for the entire image. The orientations are then normalized such that they range from 0 to n_bins, instead of from 0 to 2pi.
+This starts by using the ```compute_grad()``` function described in section 2.2 to get r and theta values for the entire image. The orientations are then normalized such that they range from 0 to n_bins, instead of from 0 to 2pi. These are then quantized in ```quantize_grad()```, which returns each theta rounded up and down along with a proportional distribution of the corresponding value of r. 
 
