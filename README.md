@@ -46,4 +46,18 @@ Dealing with the data directly is somewhat difficult because of its file format,
 
 ##2 Feature Extraction
 
-Fundamentally one 
+The first step in any classification/detection pipeline is feature extraction, assuming that your data wasn't already structured such that the features were already naturally represented. 
+
+![Features](/ReadMe Images/features.png)
+**Figure 1:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
+
+While there are many classes of features that can be extracted, a few have emerged as being robust for object detection. Higher-level filtering can be done on these features, as can be seen in the Filtered Channel Features paper, but the core of our pipeline will be the following:
+
+* LUV Color Space
+* Gradient Magnitude
+* Histogram of Gradients
+
+The code corresponding to this section is primarily located in channel_features.py, with some particular tasks implemented in a cython library grad_hist.pyx. These are mostly simply tasks, like iterating over sections of an image, which are slow in python but can be very efficient in cython.
+
+###2.1 LUV Color Space
+
