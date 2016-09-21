@@ -107,7 +107,7 @@ For example, if one of the 16 entries in the grad has ```r = 1``` and ```theta =
 
 Following the papers mentioned in the introduction, we used 4x4 grids with N  = 6 histograms per histogram. Computing HOG features is substantially more complex than other features mentioned so far, as they cannot be computed from simple array operations in numpy and Open CV. The latter has some functionality to compute these features, however it is poorly documented.
 
-The function to compute HOG features is shown below:
+The function to compute HOG features is shown below, extracted from channel_features.py:
 ```
 def hog(img):
     """
@@ -128,4 +128,5 @@ def hog(img):
     return h, r
 ```
 
+This starts by using the ```compute_grad()``` function described in section 2.2 to get ```r``` and ```theta``` values for the entire image. The orientations are then normalized such that they range from 0 to n_bins, instead of from 0 to 2pi.
 
