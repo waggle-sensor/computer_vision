@@ -15,6 +15,17 @@ This code relies on a fairly mature MATLAB tool box that Piotr Dollar has been d
 3. Training
 4. Classification
 
+This page has a lot of good resources to get a broad perspective on efficent object detection:
+
+http://mp7.watson.ibm.com/ICCV2015/ObjectDetectionICCV2015.html
+
+Especially this talk:
+
+http://mp7.watson.ibm.com/ICCV2015/slides/2015_12_11_1400_iccv_efficient_detection_tutorial.pdf
+
+And here is a good very recent review paper that covers the work I based this pipeline on (from some of the same authors):
+http://arxiv.org/pdf/1602.01237.pdf
+
 ##1. Dependencies
 ###1.1 External Libraries 
 This library was all written in Python 3. Because I have been implementing most of this code from scratch, there aren't many external dependencies:
@@ -34,3 +45,5 @@ http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/
 Dealing with the data directly is somewhat difficult because of its file format, but I have extracted everything onto an external SSD. The scripts use that particular file path still, so if you use this data you will need to change those paths when necessary. If at any time you try to run a script and end up with an empty set of data, it is probably because the path was wrong somewhere. 
 
 ##2 Feature Extraction
+
+Fundamentally one 
