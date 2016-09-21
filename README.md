@@ -139,4 +139,8 @@ It turns out that it is possible to substantially compress the feature space wit
 
 ##3 Training
 
+###3.1 Data Processing
+Training is performed on the Caltech Pedestrian Detection Data Set mentioned in the introduction. The code to process the raw data is in process_data.py, however if you are working from the directories I made you should not ever have to deal with this script because the relevent data is extracted elsewhere in the directory ```data\train\```. 
+
+The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. These former is useful for training, the latter is useful for computing feature pyramids (described later). 
 
