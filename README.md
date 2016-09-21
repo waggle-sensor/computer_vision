@@ -89,6 +89,9 @@ def compute_grad(img):
 ```cv2.Sobel``` computes smoothed x and y gradients, which then are converted to polar coordinates. The ```r``` component of this representation is the pixel-wise gradient magnitude. We will use ```r``` and ```theta``` in the next section to compute oriented gradients.
 
 
-###2.3 Oriented Gradients 
+###2.3 Histogram of Oriented Gradients (HOG)
+While there is a great deal of useful information in the gradient magnitude, it doesn't tell the whole story. As you may have guess from the previous section, the orientation can also play a crucial role. Take Figure 2, if we tried to classify it purely based on gradient magnitude, we would lose all information about the geometry of the shape. If, however, we tracked both the gradient magnitude and direction, we would easily be able to detect the unique features corresponding to the eight edges in the image.
+
 ![Octagon](/readme-images/octagon-512.gif)
-**Figure 2:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
+
+**Figure 2**
