@@ -137,6 +137,8 @@ Because we pool on 4x4 grids with 6 bins, the output h as dimensions W/4 x H/4 x
 ###2.4 Feature Aggregation
 It turns out that it is possible to substantially compress the feature space without losing much performance. For example, the six HOG features are already compress based on their 4x4 bins. We can also do something analogous with the three color features and one gradient magnitude feature by simply summing over 4x4 regions of the image, a technique known as sum pooling. In total this reduces the feature space by a factor of 4 x 4 = 16, without sacrificing performance.
 
+With all this in place, we can simply call the function ```compute_chans()``` to take an image and extract its feature channels. Later parts of the pipeline essentially only use this function.
+
 ##3 Training
 
 ###3.1 Data Processing
