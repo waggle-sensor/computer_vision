@@ -60,7 +60,7 @@ the core of our pipeline will be the following:
 
 The code corresponding to this section is primarily located in channel_features.py, with some particular tasks implemented in a cython library grad_hist.pyx. These are mostly simply tasks, like iterating over sections of an image, which are slow in python but can be very efficient in cython.
 
-We compute 10 features per pixel over 64x128x3 images, with sum pooling (described later) that reduces the space by a factor of 16, resulting in a feature vector that has 64 * 128 * 10 / 16 = 5120 features per window. In reality we compute these features for the entire image, and then take 32x64x10 windows in feature space.
+We compute 10 features per pixel over 64x128x3 images, with sum pooling (described later) that reduces the space by a factor of 16, resulting in a feature vector that has 64 * 128 * 10 / 16 = 5120 features per window. In reality we compute these features for the entire image, and then take 32x64x10 windows in feature space. In experiments on my laptop this runs at around 70 FPS for 640x480 images.
 
 ###2.1 LUV Color Space
 LUV is an alternative to RGB color space, which apparently has been found to serve as better core features than RGB for object detection problems:
@@ -86,4 +86,8 @@ def compute_grad(img):
     return r, theta
 ```
 
-```cv2.Sobel``` computes smoothed x and y gradients, which then are converted to polar coordinates. The ```r``` component of this representation is the pixel-wise gradient magnitude. 
+```cv2.Sobel``` computes smoothed x and y gradients, which then are converted to polar coordinates. The ```r``` component of this representation is the pixel-wise gradient magnitude. We will use ```r``` and ```theta``` in the next section to compute oriented gradients.
+
+
+###2.3 Oriented Gradients 
+
