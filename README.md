@@ -48,7 +48,7 @@ Dealing with the data directly is somewhat difficult because of its file format,
 
 The first step in any classification/detection pipeline is feature extraction, assuming that your data wasn't already structured such that the features were already naturally represented. 
 
-![Features](/ReadMe Images/features.png)
+![Features](/readme-images/features.png)
 **Figure 1:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
 
 While there are many classes of features that can be extracted, a few have emerged as being robust for object detection. Higher-level filtering can be done on these features, as can be seen in the Filtered Channel Features paper, but
@@ -90,4 +90,5 @@ def compute_grad(img):
 
 
 ###2.3 Oriented Gradients 
-
+![Features](/readme-images/octagon-512.gif)
+**Figure 2:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
