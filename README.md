@@ -139,6 +139,10 @@ It turns out that it is possible to substantially compress the feature space wit
 
 With all this in place, we can simply call the function ```compute_chans()``` to take an image and extract its feature channels. Later parts of the pipeline essentially only use this function.
 
+
+###2.5 Filtered Channles (future work)
+So far we've discussed what we might think of as core features, which fit into a framework that Dollar *et al.* refer to as Aggregated Channel Features (ACF). While we can do classification directly on these features, one might imagine that further processing on the features may improve detection, in the same way that adding gradient features improves on the original color features. Zhang *et al.* showed that accuracy can be improved with Filtered Channel Features (FCF). Zhang tested a variety of filters, and found that a class they call Checkerboard filters yieled the greatest improvement.
+
 ##3 Training
 
 ###3.1 Data Processing
