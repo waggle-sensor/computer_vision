@@ -143,7 +143,7 @@ Training is performed on the Caltech Pedestrian Detection Data Set mentioned in 
 
 **Figure 5:** An example of a 640x480 frame from the Caltech data set.
 
-The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. The former is useful for training, the latter is useful for computing feature pyramids (described later). 
+The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. The former is useful for training, the latter is useful for computing feature pyramids (described later). Note that we filter some of the positives, as it has been found that samples that are too small (say less than 50 pixels in height) become too distorted to be useful for training.
 
 ![Frame](/readme-images/pedestrian.png)
 
@@ -175,6 +175,11 @@ Training takes only a few seconds or so for a small number of classifiers, say `
 
 ###3.3 Hard Negative Mining/Bootstrapping
 
+As in most binary classification problems, the previous sections relied on a set of labeled positive and negative samples on which to train. Our positives are generally well defined due to the labeling that comes with the data set, negatives are more ambiguous. Technically, any image that does not contain a pedestrian in it could be considered a negative sample. Imagine if our entire set of negatives consisted of largely monochrome images of the sky, one could imagine that our classifier may just learn that anything with mixed color is a pedestrian.
+ 
+ The solution to this problem is to pick negatives that, as much as possible, are representative of the scene in which the positive images (in this case pedestrians) would appear. In a perfect world, for each positive image containing a pedestrian we would be able to obtain the identical image of the exact same scene without the pedestrian. This is of course practically impossible, so we can use a technique called hard negative mining to improve accuracy at test time. 
+ 
+ 
 ## Detection
 
 ##4.3 Cascade Classification
