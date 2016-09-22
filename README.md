@@ -153,19 +153,23 @@ The downside is that more filters means a larger feature vector per frame, which
 ##3 Training
 
 ###3.1 Data Processing
-Training is performed on the Caltech Pedestrian Detection Data Set mentioned in the introduction. The code to process the raw data is in process_data.py, however if you are working from the directories I made you should not ever have to deal with this script because the relevent data is extracted elsewhere in the directory ```data\train\```. 
+Training is performed on the Caltech Pedestrian Detection Data Set mentioned in the introduction. The code to process the raw data is in process_data.py, however if you are working from the directories I made you should not ever have to deal with this script because the relevent data is extracted elsewhere in the directory ```data\train\```. Because many adjacent frames are extremely similar, the data set is defined to consist of every 30th frame from all the videos.
 
 ![Frame](/readme-images/frame.png)
 
 **Figure 5:** An example of a 640x480 frame from the Caltech data set.
 
-The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. These former is useful for training, the latter is useful for computing feature pyramids (described later). 
+The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. The former is useful for training, the latter is useful for computing feature pyramids (described later). 
 
 ![Frame](/readme-images/pedestrian.png)
 
 **Figure 6:** An example of a 64x128 pedestrian image from the Caltech data set.
 
+For the first round of training, negatives are simply chosen at random from the training data. This is done by randomly selecting bounding boxes at different scales from the frames, and throwing out any that have too much overlap with the known positives. To limit redundancy, we take no more than 25 negatives per frame.
+
 ###3.2 Machine Learning/Adaboost
+
+Now that we have extracted training data and know how to transform raw images into feature vectors, we can attempt to learn how to classify positive and negative examples. To do this we use the [Adaboost](https://en.wikipedia.org/wiki/AdaBoost)
 
 ###3.3 Hard Negative Mining/Bootstrapping
 
