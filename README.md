@@ -162,6 +162,15 @@ In the file ```train_model.py```, most of the functions just serve to load and f
 * Fit model: ```bdt.fit(X1, Y1)```
 * Make prediction of validation set: ```Yp = bdt.predict(X2)```
 * Evaluate model accuracy: ```print(accuracy_score(Y2, Yp))```
+
+Finally, we can save a model with
+
+```joblib.dump(bdt, 'models/adaboost.pkl')```,
+
+and load it again with
+
+```bdt = joblib.load('models/adaboost.pkl')```
+
 ###3.3 Hard Negative Mining/Bootstrapping
 
 ## Detection
