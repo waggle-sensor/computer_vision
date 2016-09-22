@@ -189,7 +189,12 @@ Something to note is that, in earlier sections, the main performance bottlenecks
 
 
 ##4 Detection
+Here we will get into some of the details of doing detection on whole images, and some methods that have been found to accelerate this process so that the overall framerate improves and that the bootstrapping described in section 3.3 is tractable. In terms of the actual code in this library, these two methods are still being developed and are works on progress. 
 
 ###4.1 Cascade Classification
+
+As mentioned at the end of section 3, we noted that prediction time can be a crucial factor. Since the models may have many hundreds or even thousands of classifers, evaluating each one and aggregating their outputs can be extremely costly. To mitigate this, we can look at the other side of the coin of the idea of hard negatives - specifically that many negatives will actually be very easy to classify. 
+
+If we have a classifier that has, for example, ```n_estimators = 256```, we don't necessarily need all 256 estimators to decide that a frame that only contains blue sky isn't a pedestrian. We can instead iteratively evaluate the estimators and develop some thresholds. For instance, we can say that if is scored as a negative with probability greater than .7 at any time, then evaluation can terminate early. Because adaboost estimators are evalauted in order of their predictive power, it is often the case that anything that is confidently decided to be a negative early will end up actually being a negative. This means that we may be able to classify most negatives with fewer than 10 estimators, and only use the full 256 for true positives or negatives that are exceedingly similar to a true positive (say a far off tree that strongly resembles the shape of a person). 
 
 ###4.2 Feature Pyramids
