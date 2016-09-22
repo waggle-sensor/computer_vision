@@ -4,9 +4,7 @@
 
 This pipeline is predomianntly based on the work of two papers. The first paper "Fast Feature Pyramids for Object Detection" by Dollar et al. 2014, describes a method to efficiently compute features at a large number of different scales. 
 
-"Filtered Channel Features for Pedestrian Detection" is a recent paper that set a benchmark on real-time pedestrian detection, based largely on methods from the feature pyramid paper. Below I will describe what I have developed so far for the object detection pipeline. A MATLAB implementation of these algorithms can be found here:
-
-https://bitbucket.org/shanshanzhang/code_filteredchannelfeatures/src/d47c952daf86/Checkerboards_CVPR15_codebase/?at=default
+"Filtered Channel Features for Pedestrian Detection" is a recent paper that set a benchmark on real-time pedestrian detection, based largely on methods from the feature pyramid paper. Below I will describe what I have developed so far for the object detection pipeline. A MATLAB implementation of these algorithms can be found [here](https://bitbucket.org/shanshanzhang/code_filteredchannelfeatures/src/d47c952daf86/Checkerboards_CVPR15_codebase/?at=default).
 
 This code relies on a fairly mature MATLAB tool box that Piotr Dollar has been developing for several years. It is unfortunately only in MATLAB (with some C++), and the code can be somewhat difficult to read. This documentation will be broken into four main sections, that largely correspond to the differnet .py files I have written so far. The sections are
 
@@ -15,16 +13,7 @@ This code relies on a fairly mature MATLAB tool box that Piotr Dollar has been d
 3. Training
 4. Classification
 
-This page has a lot of good resources to get a broad perspective on efficent object detection:
-
-http://mp7.watson.ibm.com/ICCV2015/ObjectDetectionICCV2015.html
-
-Especially this talk:
-
-http://mp7.watson.ibm.com/ICCV2015/slides/2015_12_11_1400_iccv_efficient_detection_tutorial.pdf
-
-And here is a good very recent review paper that covers the work I based this pipeline on (from some of the same authors):
-http://arxiv.org/pdf/1602.01237.pdf
+[This page](http://mp7.watson.ibm.com/ICCV2015/ObjectDetectionICCV2015.html) has a lot of good resources to get a broad perspective on efficent object detection, especially [this talk](http://mp7.watson.ibm.com/ICCV2015/slides/2015_12_11_1400_iccv_efficient_detection_tutorial.pdf). And here is a good [very recent review paper](http://arxiv.org/pdf/1602.01237.pdf) that covers the work I based this pipeline on (from some of the same authors).
 
 ##1. Dependencies
 ###1.1 External Libraries 
