@@ -143,6 +143,13 @@ With all this in place, we can simply call the function ```compute_chans()``` to
 ###2.5 Filtered Channles (future work)
 So far we've discussed what we might think of as core features, which fit into a framework that Dollar *et al.* refer to as Aggregated Channel Features (ACF). While we can do classification directly on these features, one might imagine that further processing on the features may improve detection, in the same way that adding gradient features improves on the original color features. Zhang *et al.* showed that accuracy can be improved with Filtered Channel Features (FCF). Zhang tested a variety of filters, and found that a class they call Checkerboard filters yieled the greatest improvement.
 
+![Frame](/readme-images/filters.png)
+
+**Figure 4:**  Examples of filters tested by Zhang *et al.*
+
+The downside is that more filters means a larger feature vector per frame, which means slower processing, training and prediction. Once the rest of the pipeline is functional, it will be worth evaluating the performance tradeoffs of adding these filters after the core feature extraction described above.
+
+
 ##3 Training
 
 ###3.1 Data Processing
@@ -150,13 +157,13 @@ Training is performed on the Caltech Pedestrian Detection Data Set mentioned in 
 
 ![Frame](/readme-images/frame.png)
 
-**Figure 4:** An example of a 640x480 frame from the Caltech data set.
+**Figure 5:** An example of a 640x480 frame from the Caltech data set.
 
 The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. These former is useful for training, the latter is useful for computing feature pyramids (described later). 
 
 ![Frame](/readme-images/pedestrian.png)
 
-**Figure 5:** An example of a 64x128 pedestrian image from the Caltech data set.
+**Figure 6:** An example of a 64x128 pedestrian image from the Caltech data set.
 
 ###3.2 Machine Learning/Adaboost
 
