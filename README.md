@@ -171,6 +171,8 @@ and load it again with
 
 ```bdt = joblib.load('models/adaboost.pkl')```
 
+Training takes only a few seconds or so for a small number of classifiers, say ```n_estimators = 32```, however for larger models on the order of ```n_estimators = 256```, training can take upwards of 15 minutes. Dollar *et al.* and Zhang *et al.* ultimately used classifiers with thousands of trees, which can take many hours to train. They used a customized (and highly optimized) adaboost training procedure, so they report much faster training time than we get out-of-the-box with ```sklearn```. This will make testing difficult later on, however it will likely be feasible to still get good performance with far small models, as these papers were focusing on setting new benchmarks. 
+
 ###3.3 Hard Negative Mining/Bootstrapping
 
 ## Detection
