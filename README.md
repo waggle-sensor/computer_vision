@@ -207,3 +207,4 @@ An alternative is to implement adaboost from scratch and to build this functiona
 
 ###4.2 Feature Pyramids
 
+Throughout the discussion so far, we've taken for granted the assumption of a fixed model size, i.e. 64x128 windows. Obviously it won't be the case that every pedestrian happens to fit precisely in this window, so it is necessary to do detection at multiple scales.
