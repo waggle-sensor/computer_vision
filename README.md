@@ -42,7 +42,7 @@ the core of our pipeline will be the following:
 * Gradient Magnitude
 * Histogram of Gradients
 
-The code corresponding to this section is primarily located in channel_features.py, with some particular tasks implemented in a cython library grad_hist.pyx. These are mostly simply tasks, like iterating over sections of an image, which are slow in python but can be very efficient in cython.
+The code corresponding to this section is primarily located in ```channel_features.py```, with some particular tasks implemented in a cython library ```grad_hist.pyx```. These are mostly simply tasks, like iterating over sections of an image, which are slow in python but can be very efficient in cython.
 
 We compute 10 features per pixel over 64x128x3 images, with sum pooling (described later) that reduces the space by a factor of 16, resulting in a feature vector that has 64 * 128 * 10 / 16 = 5120 features per window. In reality we compute these features for the entire image, and then take 32x64x10 windows in feature space. In experiments on my laptop this runs at around 70 FPS for 640x480 images.
 
@@ -91,7 +91,7 @@ For example, if one of the 16 entries in the grad has ```r = 1``` and ```theta =
 
 Following the papers mentioned in the introduction, we used 4x4 grids with N  = 6 histograms per histogram. Computing HOG features is substantially more complex than other features mentioned so far, as they cannot be computed from simple array operations in numpy and Open CV. The latter has some functionality to compute these features, however it is poorly documented.
 
-The function to compute HOG features is shown below, extracted from channel_features.py:
+The function to compute HOG features is shown below, extracted from ```channel_features.py```:
 ```
 def hog(img):
     """
@@ -114,7 +114,7 @@ def hog(img):
 
 This starts by using the ```compute_grad()``` function described in section 2.2 to get r and theta values for the entire image. The orientations are then normalized such that they range from 0 to n_bins, instead of from 0 to 2pi. These are then quantized in ```quantize_grad()```, which returns each theta rounded up and down along with a proportional distribution of the corresponding value of r. So far all of these operations can be efficiently computed by taking advantage of numpy's fast array operations. 
 
-The final step, computing the gradient histograms, is what is very slow in native Python. Because we have to iterate over each pixel in each 4x4 grid of an image, then add it to the corresponding histogram, it is essentially unavoidable to do all this in nested ```for``` loops. To this end, we perform all of these operations in Cython, as can be seen in the grad_hist.pyx file. You shouldn't ever have to edit anything in this file, but it may be worth looking at to get a sense of why some data types are structured the way they are. 
+The final step, computing the gradient histograms, is what is very slow in native Python. Because we have to iterate over each pixel in each 4x4 grid of an image, then add it to the corresponding histogram, it is essentially unavoidable to do all this in nested ```for``` loops. To this end, we perform all of these operations in Cython, as can be seen in the ```grad_hist.pyx``` file. You shouldn't ever have to edit anything in this file, but it may be worth looking at to get a sense of why some data types are structured the way they are. 
 
 Because we pool on 4x4 grids with 6 bins, the output h as dimensions W/4 x H/4 x 6, where W and H are the width and height of the image, respectively.
 
@@ -137,7 +137,7 @@ The downside is that more filters means a larger feature vector per frame, which
 ##3 Training
 
 ###3.1 Data Processing
-Training is performed on the Caltech Pedestrian Detection Data Set mentioned in the introduction. The code to process the raw data is in process_data.py, however if you are working from the directories I made you should not ever have to deal with this script because the relevent data is extracted elsewhere in the directory ```data\train\```. Because many adjacent frames are extremely similar, the data set is defined to consist of every 30th frame from all the videos.
+Training is performed on the Caltech Pedestrian Detection Data Set mentioned in the introduction. The code to process the raw data is in ```process_data.py```, however if you are working from the directories I made you should not ever have to deal with this script because the relevent data is extracted elsewhere in the directory ```data\train\```. Because many adjacent frames are extremely similar, the data set is defined to consist of every 30th frame from all the videos.
 
 ![Frame](/readme-images/frame.png)
 
@@ -155,6 +155,13 @@ For the first round of training, negatives are simply chosen at random from the 
 
 Now that we have extracted training data and know how to transform raw images into feature vectors, we can attempt to learn how to classify positive and negative examples. To do this we use the [Adaboost](https://en.wikipedia.org/wiki/AdaBoost) classifier. This is what is known as an ensemble model, essentially one made up of many weak classifiers, say depth-two [decision trees](https://en.wikipedia.org/wiki/Decision_tree_learning), where each individual classifer only does slightly better than random guessing. If dozens, hundreds, or even thousands of these weak classifiers are combined, they can perform much better than a single strong classifier. The strenght is in weighting the trees such that larger weights are assigned to the strongest classifiers, which can be done in a systematic way. For our purposes, all we care about is that the [scikit-learn](http://scikit-learn.org/stable/) library has this, and many other, models out of the box.
 
+In the file ```train_model.py```, most of the functions just serve to load and format the training data. Below are a few exmaples of ```sklearn``` functionality, found in the ```train()``` function (bdt stands for boosted decision tree):
+
+* Initialize model: ```bdt = AdaBoostClassifier(DecisionTreeClassifier(max_depth=2), n_estimators=nweak)```
+* Split data into 2/3 train and 1/3 validation sets: ```X1, X2, Y1, Y2 = train_test_split(X, y, test_size=0.33)```
+* Fit model: ```bdt.fit(X1, Y1)```
+* Make prediction of validation set: ```Yp = bdt.predict(X2)```
+* Evaluate model accuracy: ```print(accuracy_score(Y2, Yp))```
 ###3.3 Hard Negative Mining/Bootstrapping
 
 ## Detection
