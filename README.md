@@ -23,8 +23,7 @@ This library was all written in Python 3. Because I have been implementing most 
 * [cython](http://cython.org/)
 * [opencv](http://opencv.org/)
 
-The first three are all easy to install, open cv requires a bit more work as it is essentially a giant collection of C++ wrappers. The easiest guide to installing it can be found here, this is what I used to get it working:
-http://www.pyimagesearch.com/2015/07/20/install-opencv-3-0-and-python-3-4-on-ubuntu/
+The first three are all easy to install, open cv requires a bit more work as it is essentially a giant collection of C++ wrappers. The easiest guide to installing it can be found [here](http://www.pyimagesearch.com/2015/07/20/install-opencv-3-0-and-python-3-4-on-ubuntu/), this is what I used to get it working.
 
 ###1.2 Training Data
 Much of all the training and processing code relies on the training data from the [Caltech Pedestrian Detection Data Set](http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/). Dealing with the data directly is somewhat difficult because of its file format, but I have extracted everything onto an external SSD. The scripts use that particular file path still, so if you use this data you will need to change those paths when necessary. If at any time you try to run a script and end up with an empty set of data, it is probably because the path was wrong somewhere. 
