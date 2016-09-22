@@ -179,6 +179,12 @@ As in most binary classification problems, the previous sections relied on a set
  
  The solution to this problem is to pick negatives that, as much as possible, are representative of the scene in which the positive images (in this case pedestrians) would appear. In a perfect world, for each positive image containing a pedestrian we would be able to obtain the identical image of the exact same scene without the pedestrian. This is of course practically impossible, so we can use a technique called hard negative mining to improve accuracy at test time. 
  
+ The way this is works is to train an initial Adaboost classifer as described in section 3.2, with randomly selected negatives and a small number of weak classifiers, say ```n_estimators = 32```. This classifier may do a reasonable job of detecting pedestrians when they are in the frame (i.e. high precision), however it will also have a very high false positive rate. 
+ 
+ Here we will turn a bug into a feature, and use this detector to generate new negatives for the next round of training. This second round of training will use the same set of positives as the original model, however it will sample negatives both from the original negative set and the set of false positives found using the first model. These false positives are images that we know should be classified as negatives, yet managed to fool our original classifier, hence they are considered to be *hard negatives*. This second model will use a larger number of estimators as well, say ```n_estimators = 64```. 
+ 
+ This is a case of the more general statistical notion of [boostrapping](https://en.wikipedia.org/wiki/Bootstrapping_(statistics), where we make use of the statistics of an existing data set to simulate the generation of more data. Ideally, as we repeat this process each new model will have asymptotically decreasing false positive rates. This comes at a price, since as each model improves it will become increasingly difficult to find false positives.
+ 
  
 ## Detection
 
