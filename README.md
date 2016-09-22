@@ -18,20 +18,16 @@ This code relies on a fairly mature MATLAB tool box that Piotr Dollar has been d
 ##1. Dependencies
 ###1.1 External Libraries 
 This library was all written in Python 3. Because I have been implementing most of this code from scratch, there aren't many external dependencies:
-* numpy
-* sklearn
-* cython
-* open cv
+* [numpy](http://www.numpy.org/)
+* [scikit-learn](http://scikit-learn.org/stable/)
+* [cython](http://cython.org/)
+* [opencv](http://opencv.org/)
 
 The first three are all easy to install, open cv requires a bit more work as it is essentially a giant collection of C++ wrappers. The easiest guide to installing it can be found here, this is what I used to get it working:
 http://www.pyimagesearch.com/2015/07/20/install-opencv-3-0-and-python-3-4-on-ubuntu/
 
 ###1.2 Training Data
-Much of all the training and processing code relies on the training data from the Caltech Pedestrian Detection Data Set:
-
-http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/
-
-Dealing with the data directly is somewhat difficult because of its file format, but I have extracted everything onto an external SSD. The scripts use that particular file path still, so if you use this data you will need to change those paths when necessary. If at any time you try to run a script and end up with an empty set of data, it is probably because the path was wrong somewhere. 
+Much of all the training and processing code relies on the training data from the [Caltech Pedestrian Detection Data Set](http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/). Dealing with the data directly is somewhat difficult because of its file format, but I have extracted everything onto an external SSD. The scripts use that particular file path still, so if you use this data you will need to change those paths when necessary. If at any time you try to run a script and end up with an empty set of data, it is probably because the path was wrong somewhere. 
 
 ##2 Feature Extraction
 
@@ -158,7 +154,7 @@ For the first round of training, negatives are simply chosen at random from the 
 
 ###3.2 Machine Learning/Adaboost
 
-Now that we have extracted training data and know how to transform raw images into feature vectors, we can attempt to learn how to classify positive and negative examples. To do this we use the [Adaboost](https://en.wikipedia.org/wiki/AdaBoost)
+Now that we have extracted training data and know how to transform raw images into feature vectors, we can attempt to learn how to classify positive and negative examples. To do this we use the [Adaboost](https://en.wikipedia.org/wiki/AdaBoost) classifier. This is what is known as an ensemble model, essentially one made up of many weak classifiers, say depth-two [decision trees](https://en.wikipedia.org/wiki/Decision_tree_learning), where each individual classifer only does slightly better than random guessing. If dozens, hundreds, or even thousands of these weak classifiers are combined, they can perform much better than a single strong classifier. The strenght is in weighting the trees such that larger weights are assigned to the strongest classifiers, which can be done in a systematic way. For our purposes, all we care about is that the [scikit-learn](http://scikit-learn.org/stable/) library has this, and many other, models out of the box.
 
 ###3.3 Hard Negative Mining/Bootstrapping
 
