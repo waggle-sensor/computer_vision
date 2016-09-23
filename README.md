@@ -207,4 +207,27 @@ An alternative is to implement adaboost from scratch and to build this functiona
 
 ###4.2 Feature Pyramids
 
-Throughout the discussion so far, we've taken for granted the assumption of a fixed model size, i.e. 64x128 windows. Obviously it won't be the case that every pedestrian happens to fit precisely in this window, so it is necessary to do detection at multiple scales. This is where the idea of image pyramids come in, where we can use the same model size and simply resize the image to multiple scales.
+Throughout the discussion so far, we've taken for granted the assumption of a fixed model size, i.e. 64x128 windows. Obviously it won't be the case that every pedestrian happens to fit precisely in this window, so it is necessary to do detection at multiple scales. This is where the idea of image pyramids come in, where we can use the same model size and simply resize the image to multiple scales. The naive implementation is simple, you simple interpolate the image up and down at say 24 scales, and then do object detection at each one. 
+
+The issue is that this means that for each frame, you have now increased the resources required for object detection by a factor of 24. The paper from Dollar *et al.* proposes a novel technique where instead of computing image pyramids, we compute feature pyramids. More precisely, we first compute the features on the image and rescale those, which means that we don't need to recompute them at each scale. 
+
+While this idea seems intuitively straight forward, the issue is that scaling an image by a factor of 1/2 does not imply that, for example, the gradient magnitude in the image scales by a factor of 1/2. Rather it has been shown that many common image features scale according to a power law. If the scales we are looking at are labeled ```s_1``` and ```s_2```, then the scaling of a given feature follow the relationship
+
+```f(s_1)/f(s_2) = (s_1/s_2)^{-lambda},```
+
+where ```lambda``` is compute from the statistics of example images. In practice this scaling only works over a limited range and works better for downsampling than for upsampling. Dollar use the strategy of interpolating over octaves, so explitly computing at original scale and say 1/2 scale, and interpolating with the power law relationship in between. This process can be seen in ```pyramids.py```. The computation of ```lambdas``` can be seen in the following function:
+
+```
+def compute_lambdas(frames, frames_s):
+    n_chans = frames[0].shape[2]
+    N = len(frames)
+
+    f = np.array([[frames[i][:, :, c].mean() for c in range(n_chans)] for i in range(N)])
+    f_s = np.array([[frames_s[i][:, :, c].mean() for c in range(n_chans)] for i in range(N)])
+
+    mu_s = (f_s / f).mean(axis=0)
+    lambdas = - np.log2(mu_s) / np.log2(1/2)
+    return lambdas
+```
+
+This function takes in sets of frames and thsoe same frames rescaled by a factor of 1/2, and then estiamtes ```lambdas``` for each feature.
