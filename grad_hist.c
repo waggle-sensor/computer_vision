@@ -1364,8 +1364,8 @@ static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '
 static const char __pyx_k_Invalid_shape_in_axis_d_d[] = "Invalid shape in axis %d: %d.";
 static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
 static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
+static const char __pyx_k_home_lane_Development_computer[] = "/home/lane/Development/computer_vision/grad_hist.pyx";
 static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
-static const char __pyx_k_home_nolsman_PycharmProjects_FC[] = "/home/nolsman/PycharmProjects/FCF/grad_hist.pyx";
 static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
 static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
 static const char __pyx_k_Empty_shape_tuple_for_cython_arr[] = "Empty shape tuple for cython.array";
@@ -1421,7 +1421,7 @@ static PyObject *__pyx_n_s_grad;
 static PyObject *__pyx_n_s_grad_hist;
 static PyObject *__pyx_n_s_grad_p;
 static PyObject *__pyx_n_s_h;
-static PyObject *__pyx_kp_s_home_nolsman_PycharmProjects_FC;
+static PyObject *__pyx_kp_s_home_lane_Development_computer;
 static PyObject *__pyx_n_s_hx;
 static PyObject *__pyx_n_s_hy;
 static PyObject *__pyx_n_s_i;
@@ -1543,12 +1543,13 @@ static PyObject *__pyx_codeobj__19;
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def grad_hist(int[:,::1] tf, int[:,::1] tc, float[:,::1] rf, float[:,::1] rc,             # <<<<<<<<<<<<<<
  * 			  int cell_x, int cell_y, int n_bins):
- * 	cdef:
+ * 	"""
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_9grad_hist_1grad_hist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_9grad_hist_1grad_hist = {"grad_hist", (PyCFunction)__pyx_pw_9grad_hist_1grad_hist, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_9grad_hist_grad_hist[] = "\n\t:param tf:\n\t:param tc:\n\t:param rf:\n\t:param rc:\n\t:param cell_x:\n\t:param cell_y:\n\t:param n_bins:\n\t:return:\n\tCompute Histogram of Oriented Gradients give rounded thetas and interpolated rs\n\t";
+static PyMethodDef __pyx_mdef_9grad_hist_1grad_hist = {"grad_hist", (PyCFunction)__pyx_pw_9grad_hist_1grad_hist, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9grad_hist_grad_hist};
 static PyObject *__pyx_pw_9grad_hist_1grad_hist(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_tf = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_tc = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -1694,8 +1695,8 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
   Py_ssize_t __pyx_t_28;
   __Pyx_RefNannySetupContext("grad_hist", 0);
 
-  /* "grad_hist.pyx":10
- * 			  int cell_x, int cell_y, int n_bins):
+  /* "grad_hist.pyx":21
+ * 	"""
  * 	cdef:
  * 		int xmax = tf.shape[0]             # <<<<<<<<<<<<<<
  * 		int ymax = tf.shape[1]
@@ -1703,7 +1704,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  */
   __pyx_v_xmax = (__pyx_v_tf.shape[0]);
 
-  /* "grad_hist.pyx":11
+  /* "grad_hist.pyx":22
  * 	cdef:
  * 		int xmax = tf.shape[0]
  * 		int ymax = tf.shape[1]             # <<<<<<<<<<<<<<
@@ -1712,7 +1713,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  */
   __pyx_v_ymax = (__pyx_v_tf.shape[1]);
 
-  /* "grad_hist.pyx":16
+  /* "grad_hist.pyx":27
  * 		float[:,:,::1] h
  * 
  * 	hx = xmax // cell_x             # <<<<<<<<<<<<<<
@@ -1721,15 +1722,15 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  */
   if (unlikely(__pyx_v_cell_x == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 16, __pyx_L1_error)
+    __PYX_ERR(0, 27, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_cell_x == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_xmax))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 16, __pyx_L1_error)
+    __PYX_ERR(0, 27, __pyx_L1_error)
   }
   __pyx_v_hx = __Pyx_div_int(__pyx_v_xmax, __pyx_v_cell_x);
 
-  /* "grad_hist.pyx":17
+  /* "grad_hist.pyx":28
  * 
  * 	hx = xmax // cell_x
  * 	hy = ymax // cell_y             # <<<<<<<<<<<<<<
@@ -1738,33 +1739,33 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  */
   if (unlikely(__pyx_v_cell_y == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 17, __pyx_L1_error)
+    __PYX_ERR(0, 28, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_cell_y == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_ymax))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 17, __pyx_L1_error)
+    __PYX_ERR(0, 28, __pyx_L1_error)
   }
   __pyx_v_hy = __Pyx_div_int(__pyx_v_ymax, __pyx_v_cell_y);
 
-  /* "grad_hist.pyx":18
+  /* "grad_hist.pyx":29
  * 	hx = xmax // cell_x
  * 	hy = ymax // cell_y
  * 	h = np.zeros((hx, hy, n_bins), dtype=np.float32)             # <<<<<<<<<<<<<<
  * 	for x in range(hx):
  * 		for y in range(hy):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_hx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_hx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_hy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_hy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_n_bins); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_n_bins); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -1775,33 +1776,33 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_float32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_float32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_float(__pyx_t_1);
-  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_h = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "grad_hist.pyx":19
+  /* "grad_hist.pyx":30
  * 	hy = ymax // cell_y
  * 	h = np.zeros((hx, hy, n_bins), dtype=np.float32)
  * 	for x in range(hx):             # <<<<<<<<<<<<<<
@@ -1812,7 +1813,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_x = __pyx_t_8;
 
-    /* "grad_hist.pyx":20
+    /* "grad_hist.pyx":31
  * 	h = np.zeros((hx, hy, n_bins), dtype=np.float32)
  * 	for x in range(hx):
  * 		for y in range(hy):             # <<<<<<<<<<<<<<
@@ -1823,7 +1824,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_y = __pyx_t_10;
 
-      /* "grad_hist.pyx":21
+      /* "grad_hist.pyx":32
  * 	for x in range(hx):
  * 		for y in range(hy):
  * 			for i in range(cell_x):             # <<<<<<<<<<<<<<
@@ -1834,7 +1835,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_i = __pyx_t_12;
 
-        /* "grad_hist.pyx":22
+        /* "grad_hist.pyx":33
  * 		for y in range(hy):
  * 			for i in range(cell_x):
  * 				for j in range(cell_y):             # <<<<<<<<<<<<<<
@@ -1845,7 +1846,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
         for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
           __pyx_v_j = __pyx_t_14;
 
-          /* "grad_hist.pyx":23
+          /* "grad_hist.pyx":34
  * 			for i in range(cell_x):
  * 				for j in range(cell_y):
  * 					x_s = cell_x*x + i             # <<<<<<<<<<<<<<
@@ -1854,7 +1855,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  */
           __pyx_v_x_s = ((__pyx_v_cell_x * __pyx_v_x) + __pyx_v_i);
 
-          /* "grad_hist.pyx":24
+          /* "grad_hist.pyx":35
  * 				for j in range(cell_y):
  * 					x_s = cell_x*x + i
  * 					y_s = cell_y*y + j             # <<<<<<<<<<<<<<
@@ -1863,7 +1864,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  */
           __pyx_v_y_s = ((__pyx_v_cell_y * __pyx_v_y) + __pyx_v_j);
 
-          /* "grad_hist.pyx":25
+          /* "grad_hist.pyx":36
  * 					x_s = cell_x*x + i
  * 					y_s = cell_y*y + j
  * 					h[x, y, tf[x_s,y_s]] += rf[x_s,y_s]             # <<<<<<<<<<<<<<
@@ -1879,7 +1880,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
           __pyx_t_21 = (*((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_tf.data + __pyx_t_17 * __pyx_v_tf.strides[0]) )) + __pyx_t_18)) )));
           *((float *) ( /* dim=2 */ ((char *) (((float *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_h.data + __pyx_t_19 * __pyx_v_h.strides[0]) ) + __pyx_t_20 * __pyx_v_h.strides[1]) )) + __pyx_t_21)) )) += (*((float *) ( /* dim=1 */ ((char *) (((float *) ( /* dim=0 */ (__pyx_v_rf.data + __pyx_t_15 * __pyx_v_rf.strides[0]) )) + __pyx_t_16)) )));
 
-          /* "grad_hist.pyx":26
+          /* "grad_hist.pyx":37
  * 					y_s = cell_y*y + j
  * 					h[x, y, tf[x_s,y_s]] += rf[x_s,y_s]
  * 					h[x, y, tc[x_s,y_s]] += rc[x_s,y_s]             # <<<<<<<<<<<<<<
@@ -1899,7 +1900,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
     }
   }
 
-  /* "grad_hist.pyx":28
+  /* "grad_hist.pyx":39
  * 					h[x, y, tc[x_s,y_s]] += rc[x_s,y_s]
  * 
  * 	return np.asarray(h)             # <<<<<<<<<<<<<<
@@ -1907,12 +1908,12 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_h, 3, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_h, 3, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_2 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -1925,17 +1926,17 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
@@ -1949,7 +1950,7 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def grad_hist(int[:,::1] tf, int[:,::1] tc, float[:,::1] rf, float[:,::1] rc,             # <<<<<<<<<<<<<<
  * 			  int cell_x, int cell_y, int n_bins):
- * 	cdef:
+ * 	"""
  */
 
   /* function exit code */
@@ -1973,17 +1974,18 @@ static PyObject *__pyx_pf_9grad_hist_grad_hist(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "grad_hist.pyx":32
+/* "grad_hist.pyx":43
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_frame(int[:,:,::1] frame, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = frame.shape[0]
+ * 	"""
+ * 
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_9grad_hist_3sum_pool_frame(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_9grad_hist_3sum_pool_frame = {"sum_pool_frame", (PyCFunction)__pyx_pw_9grad_hist_3sum_pool_frame, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_9grad_hist_2sum_pool_frame[] = "\n\n\t:param frame:\n\t:param cell_x:\n\t:param cell_y:\n\t:return:\n\tDoes pooling over cell_x by cell_y regions in a frame\n\t";
+static PyMethodDef __pyx_mdef_9grad_hist_3sum_pool_frame = {"sum_pool_frame", (PyCFunction)__pyx_pw_9grad_hist_3sum_pool_frame, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9grad_hist_2sum_pool_frame};
 static PyObject *__pyx_pw_9grad_hist_3sum_pool_frame(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_frame = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_cell_x;
@@ -2012,16 +2014,16 @@ static PyObject *__pyx_pw_9grad_hist_3sum_pool_frame(PyObject *__pyx_self, PyObj
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_cell_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sum_pool_frame", 1, 3, 3, 1); __PYX_ERR(0, 32, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sum_pool_frame", 1, 3, 3, 1); __PYX_ERR(0, 43, __pyx_L3_error)
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_cell_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sum_pool_frame", 1, 3, 3, 2); __PYX_ERR(0, 32, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sum_pool_frame", 1, 3, 3, 2); __PYX_ERR(0, 43, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sum_pool_frame") < 0)) __PYX_ERR(0, 32, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sum_pool_frame") < 0)) __PYX_ERR(0, 43, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2030,13 +2032,13 @@ static PyObject *__pyx_pw_9grad_hist_3sum_pool_frame(PyObject *__pyx_self, PyObj
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_frame = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_int(values[0]); if (unlikely(!__pyx_v_frame.memview)) __PYX_ERR(0, 32, __pyx_L3_error)
-    __pyx_v_cell_x = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_cell_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L3_error)
-    __pyx_v_cell_y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_cell_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L3_error)
+    __pyx_v_frame = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_int(values[0]); if (unlikely(!__pyx_v_frame.memview)) __PYX_ERR(0, 43, __pyx_L3_error)
+    __pyx_v_cell_x = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_cell_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L3_error)
+    __pyx_v_cell_y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_cell_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sum_pool_frame", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 32, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sum_pool_frame", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 43, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("grad_hist.sum_pool_frame", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2098,8 +2100,8 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
   Py_ssize_t __pyx_t_32;
   __Pyx_RefNannySetupContext("sum_pool_frame", 0);
 
-  /* "grad_hist.pyx":34
- * def sum_pool_frame(int[:,:,::1] frame, int cell_x, int cell_y):
+  /* "grad_hist.pyx":53
+ * 	"""
  * 	cdef:
  * 		int xmax = frame.shape[0]             # <<<<<<<<<<<<<<
  * 		int ymax = frame.shape[1]
@@ -2107,7 +2109,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
   __pyx_v_xmax = (__pyx_v_frame.shape[0]);
 
-  /* "grad_hist.pyx":35
+  /* "grad_hist.pyx":54
  * 	cdef:
  * 		int xmax = frame.shape[0]
  * 		int ymax = frame.shape[1]             # <<<<<<<<<<<<<<
@@ -2116,7 +2118,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
   __pyx_v_ymax = (__pyx_v_frame.shape[1]);
 
-  /* "grad_hist.pyx":36
+  /* "grad_hist.pyx":55
  * 		int xmax = frame.shape[0]
  * 		int ymax = frame.shape[1]
  * 		int chans = frame.shape[2]             # <<<<<<<<<<<<<<
@@ -2125,7 +2127,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
   __pyx_v_chans = (__pyx_v_frame.shape[2]);
 
-  /* "grad_hist.pyx":41
+  /* "grad_hist.pyx":60
  * 		int[:,:,::1] frame_p
  * 
  * 	hx = xmax // cell_x             # <<<<<<<<<<<<<<
@@ -2134,15 +2136,15 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
   if (unlikely(__pyx_v_cell_x == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 41, __pyx_L1_error)
+    __PYX_ERR(0, 60, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_cell_x == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_xmax))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 41, __pyx_L1_error)
+    __PYX_ERR(0, 60, __pyx_L1_error)
   }
   __pyx_v_hx = __Pyx_div_int(__pyx_v_xmax, __pyx_v_cell_x);
 
-  /* "grad_hist.pyx":42
+  /* "grad_hist.pyx":61
  * 
  * 	hx = xmax // cell_x
  * 	hy = ymax // cell_y             # <<<<<<<<<<<<<<
@@ -2151,33 +2153,33 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
   if (unlikely(__pyx_v_cell_y == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 42, __pyx_L1_error)
+    __PYX_ERR(0, 61, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_cell_y == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_ymax))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 42, __pyx_L1_error)
+    __PYX_ERR(0, 61, __pyx_L1_error)
   }
   __pyx_v_hy = __Pyx_div_int(__pyx_v_ymax, __pyx_v_cell_y);
 
-  /* "grad_hist.pyx":43
+  /* "grad_hist.pyx":62
  * 	hx = xmax // cell_x
  * 	hy = ymax // cell_y
  * 	frame_p = np.zeros((hx, hy, chans), dtype=np.int32)             # <<<<<<<<<<<<<<
  * 	for x in range(hx):
  * 		for y in range(hy):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_hx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_hx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_hy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_hy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_chans); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_chans); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1);
@@ -2188,33 +2190,33 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_5 = PyDict_New(); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_1) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_d_dc_int(__pyx_t_1);
-  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_frame_p = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "grad_hist.pyx":44
+  /* "grad_hist.pyx":63
  * 	hy = ymax // cell_y
  * 	frame_p = np.zeros((hx, hy, chans), dtype=np.int32)
  * 	for x in range(hx):             # <<<<<<<<<<<<<<
@@ -2225,7 +2227,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_x = __pyx_t_8;
 
-    /* "grad_hist.pyx":45
+    /* "grad_hist.pyx":64
  * 	frame_p = np.zeros((hx, hy, chans), dtype=np.int32)
  * 	for x in range(hx):
  * 		for y in range(hy):             # <<<<<<<<<<<<<<
@@ -2236,7 +2238,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_y = __pyx_t_10;
 
-      /* "grad_hist.pyx":46
+      /* "grad_hist.pyx":65
  * 	for x in range(hx):
  * 		for y in range(hy):
  * 			for i in range(cell_x):             # <<<<<<<<<<<<<<
@@ -2247,7 +2249,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_i = __pyx_t_12;
 
-        /* "grad_hist.pyx":47
+        /* "grad_hist.pyx":66
  * 		for y in range(hy):
  * 			for i in range(cell_x):
  * 				for j in range(cell_y):             # <<<<<<<<<<<<<<
@@ -2258,7 +2260,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
         for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
           __pyx_v_j = __pyx_t_14;
 
-          /* "grad_hist.pyx":48
+          /* "grad_hist.pyx":67
  * 			for i in range(cell_x):
  * 				for j in range(cell_y):
  * 					x_s = cell_x*x + i             # <<<<<<<<<<<<<<
@@ -2267,7 +2269,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
           __pyx_v_x_s = ((__pyx_v_cell_x * __pyx_v_x) + __pyx_v_i);
 
-          /* "grad_hist.pyx":49
+          /* "grad_hist.pyx":68
  * 				for j in range(cell_y):
  * 					x_s = cell_x*x + i
  * 					y_s = cell_y*y + j             # <<<<<<<<<<<<<<
@@ -2276,7 +2278,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  */
           __pyx_v_y_s = ((__pyx_v_cell_y * __pyx_v_y) + __pyx_v_j);
 
-          /* "grad_hist.pyx":50
+          /* "grad_hist.pyx":69
  * 					x_s = cell_x*x + i
  * 					y_s = cell_y*y + j
  * 					frame_p[x, y, 0] += frame[x_s,y_s, 0]             # <<<<<<<<<<<<<<
@@ -2291,7 +2293,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
           __pyx_t_20 = 0;
           *((int *) ( /* dim=2 */ ((char *) (((int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_frame_p.data + __pyx_t_18 * __pyx_v_frame_p.strides[0]) ) + __pyx_t_19 * __pyx_v_frame_p.strides[1]) )) + __pyx_t_20)) )) += (*((int *) ( /* dim=2 */ ((char *) (((int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_frame.data + __pyx_t_15 * __pyx_v_frame.strides[0]) ) + __pyx_t_16 * __pyx_v_frame.strides[1]) )) + __pyx_t_17)) )));
 
-          /* "grad_hist.pyx":51
+          /* "grad_hist.pyx":70
  * 					y_s = cell_y*y + j
  * 					frame_p[x, y, 0] += frame[x_s,y_s, 0]
  * 					frame_p[x, y, 1] += frame[x_s,y_s, 1]             # <<<<<<<<<<<<<<
@@ -2306,7 +2308,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
           __pyx_t_26 = 1;
           *((int *) ( /* dim=2 */ ((char *) (((int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_frame_p.data + __pyx_t_24 * __pyx_v_frame_p.strides[0]) ) + __pyx_t_25 * __pyx_v_frame_p.strides[1]) )) + __pyx_t_26)) )) += (*((int *) ( /* dim=2 */ ((char *) (((int *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_frame.data + __pyx_t_21 * __pyx_v_frame.strides[0]) ) + __pyx_t_22 * __pyx_v_frame.strides[1]) )) + __pyx_t_23)) )));
 
-          /* "grad_hist.pyx":52
+          /* "grad_hist.pyx":71
  * 					frame_p[x, y, 0] += frame[x_s,y_s, 0]
  * 					frame_p[x, y, 1] += frame[x_s,y_s, 1]
  * 					frame_p[x, y, 2] += frame[x_s,y_s, 2]             # <<<<<<<<<<<<<<
@@ -2325,7 +2327,7 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
     }
   }
 
-  /* "grad_hist.pyx":53
+  /* "grad_hist.pyx":72
  * 					frame_p[x, y, 1] += frame[x_s,y_s, 1]
  * 					frame_p[x, y, 2] += frame[x_s,y_s, 2]
  * 	return np.asarray(frame_p)             # <<<<<<<<<<<<<<
@@ -2333,12 +2335,12 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_frame_p, 3, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_frame_p, 3, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_2 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -2351,17 +2353,17 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2); __pyx_t_2 = NULL;
     __Pyx_GIVEREF(__pyx_t_5);
     PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_5);
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
@@ -2370,12 +2372,12 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "grad_hist.pyx":32
+  /* "grad_hist.pyx":43
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_frame(int[:,:,::1] frame, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = frame.shape[0]
+ * 	"""
+ * 
  */
 
   /* function exit code */
@@ -2396,17 +2398,18 @@ static PyObject *__pyx_pf_9grad_hist_2sum_pool_frame(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "grad_hist.pyx":57
+/* "grad_hist.pyx":76
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_grad(float[:,::1] grad, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = grad.shape[0]
+ * 	"""
+ * 	Does pooling over cell_x by cell_y regions of gradient magnitude. Basically the same as sum_pool_frame,
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_9grad_hist_5sum_pool_grad(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_9grad_hist_5sum_pool_grad = {"sum_pool_grad", (PyCFunction)__pyx_pw_9grad_hist_5sum_pool_grad, METH_VARARGS|METH_KEYWORDS, 0};
+static char __pyx_doc_9grad_hist_4sum_pool_grad[] = "\n\tDoes pooling over cell_x by cell_y regions of gradient magnitude. Basically the same as sum_pool_frame,\n\texcept takes in floats.\n\t:param grad:\n\t:param cell_x:\n\t:param cell_y:\n\t:return:\n\t";
+static PyMethodDef __pyx_mdef_9grad_hist_5sum_pool_grad = {"sum_pool_grad", (PyCFunction)__pyx_pw_9grad_hist_5sum_pool_grad, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9grad_hist_4sum_pool_grad};
 static PyObject *__pyx_pw_9grad_hist_5sum_pool_grad(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_grad = { 0, 0, { 0 }, { 0 }, { 0 } };
   int __pyx_v_cell_x;
@@ -2435,16 +2438,16 @@ static PyObject *__pyx_pw_9grad_hist_5sum_pool_grad(PyObject *__pyx_self, PyObje
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_cell_x)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sum_pool_grad", 1, 3, 3, 1); __PYX_ERR(0, 57, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sum_pool_grad", 1, 3, 3, 1); __PYX_ERR(0, 76, __pyx_L3_error)
         }
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_cell_y)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sum_pool_grad", 1, 3, 3, 2); __PYX_ERR(0, 57, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sum_pool_grad", 1, 3, 3, 2); __PYX_ERR(0, 76, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sum_pool_grad") < 0)) __PYX_ERR(0, 57, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sum_pool_grad") < 0)) __PYX_ERR(0, 76, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -2453,13 +2456,13 @@ static PyObject *__pyx_pw_9grad_hist_5sum_pool_grad(PyObject *__pyx_self, PyObje
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_grad = __Pyx_PyObject_to_MemoryviewSlice_d_dc_float(values[0]); if (unlikely(!__pyx_v_grad.memview)) __PYX_ERR(0, 57, __pyx_L3_error)
-    __pyx_v_cell_x = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_cell_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
-    __pyx_v_cell_y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_cell_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+    __pyx_v_grad = __Pyx_PyObject_to_MemoryviewSlice_d_dc_float(values[0]); if (unlikely(!__pyx_v_grad.memview)) __PYX_ERR(0, 76, __pyx_L3_error)
+    __pyx_v_cell_x = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_cell_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L3_error)
+    __pyx_v_cell_y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_cell_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 76, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sum_pool_grad", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 57, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sum_pool_grad", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 76, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("grad_hist.sum_pool_grad", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2507,8 +2510,8 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
   Py_ssize_t __pyx_t_18;
   __Pyx_RefNannySetupContext("sum_pool_grad", 0);
 
-  /* "grad_hist.pyx":59
- * def sum_pool_grad(float[:,::1] grad, int cell_x, int cell_y):
+  /* "grad_hist.pyx":86
+ * 	"""
  * 	cdef:
  * 		int xmax = grad.shape[0]             # <<<<<<<<<<<<<<
  * 		int ymax = grad.shape[1]
@@ -2516,7 +2519,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
   __pyx_v_xmax = (__pyx_v_grad.shape[0]);
 
-  /* "grad_hist.pyx":60
+  /* "grad_hist.pyx":87
  * 	cdef:
  * 		int xmax = grad.shape[0]
  * 		int ymax = grad.shape[1]             # <<<<<<<<<<<<<<
@@ -2525,7 +2528,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
   __pyx_v_ymax = (__pyx_v_grad.shape[1]);
 
-  /* "grad_hist.pyx":61
+  /* "grad_hist.pyx":88
  * 		int xmax = grad.shape[0]
  * 		int ymax = grad.shape[1]
  * 		int chans = grad.shape[2]             # <<<<<<<<<<<<<<
@@ -2534,7 +2537,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
   __pyx_v_chans = (__pyx_v_grad.shape[2]);
 
-  /* "grad_hist.pyx":66
+  /* "grad_hist.pyx":93
  * 		float[:, ::1] grad_p
  * 
  * 	hx = xmax // cell_x             # <<<<<<<<<<<<<<
@@ -2543,15 +2546,15 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
   if (unlikely(__pyx_v_cell_x == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 66, __pyx_L1_error)
+    __PYX_ERR(0, 93, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_cell_x == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_xmax))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 66, __pyx_L1_error)
+    __PYX_ERR(0, 93, __pyx_L1_error)
   }
   __pyx_v_hx = __Pyx_div_int(__pyx_v_xmax, __pyx_v_cell_x);
 
-  /* "grad_hist.pyx":67
+  /* "grad_hist.pyx":94
  * 
  * 	hx = xmax // cell_x
  * 	hy = ymax // cell_y             # <<<<<<<<<<<<<<
@@ -2560,31 +2563,31 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
   if (unlikely(__pyx_v_cell_y == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
-    __PYX_ERR(0, 67, __pyx_L1_error)
+    __PYX_ERR(0, 94, __pyx_L1_error)
   }
   else if (sizeof(int) == sizeof(long) && (!(((int)-1) > 0)) && unlikely(__pyx_v_cell_y == (int)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_ymax))) {
     PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
-    __PYX_ERR(0, 67, __pyx_L1_error)
+    __PYX_ERR(0, 94, __pyx_L1_error)
   }
   __pyx_v_hy = __Pyx_div_int(__pyx_v_ymax, __pyx_v_cell_y);
 
-  /* "grad_hist.pyx":68
+  /* "grad_hist.pyx":95
  * 	hx = xmax // cell_x
  * 	hy = ymax // cell_y
  * 	grad_p = np.zeros((hx, hy), dtype=np.float32)             # <<<<<<<<<<<<<<
  * 	for x in range(hx):
  * 		for y in range(hy):
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_hx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_hx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_hy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_hy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
@@ -2592,33 +2595,33 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_1 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 68, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_float(__pyx_t_5);
-  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 68, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_grad_p = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "grad_hist.pyx":69
+  /* "grad_hist.pyx":96
  * 	hy = ymax // cell_y
  * 	grad_p = np.zeros((hx, hy), dtype=np.float32)
  * 	for x in range(hx):             # <<<<<<<<<<<<<<
@@ -2629,7 +2632,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_x = __pyx_t_8;
 
-    /* "grad_hist.pyx":70
+    /* "grad_hist.pyx":97
  * 	grad_p = np.zeros((hx, hy), dtype=np.float32)
  * 	for x in range(hx):
  * 		for y in range(hy):             # <<<<<<<<<<<<<<
@@ -2640,7 +2643,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
     for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
       __pyx_v_y = __pyx_t_10;
 
-      /* "grad_hist.pyx":71
+      /* "grad_hist.pyx":98
  * 	for x in range(hx):
  * 		for y in range(hy):
  * 			for i in range(cell_x):             # <<<<<<<<<<<<<<
@@ -2651,7 +2654,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_i = __pyx_t_12;
 
-        /* "grad_hist.pyx":72
+        /* "grad_hist.pyx":99
  * 		for y in range(hy):
  * 			for i in range(cell_x):
  * 				for j in range(cell_y):             # <<<<<<<<<<<<<<
@@ -2662,7 +2665,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
         for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
           __pyx_v_j = __pyx_t_14;
 
-          /* "grad_hist.pyx":73
+          /* "grad_hist.pyx":100
  * 			for i in range(cell_x):
  * 				for j in range(cell_y):
  * 					x_s = cell_x*x + i             # <<<<<<<<<<<<<<
@@ -2671,7 +2674,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
           __pyx_v_x_s = ((__pyx_v_cell_x * __pyx_v_x) + __pyx_v_i);
 
-          /* "grad_hist.pyx":74
+          /* "grad_hist.pyx":101
  * 				for j in range(cell_y):
  * 					x_s = cell_x*x + i
  * 					y_s = cell_y*y + j             # <<<<<<<<<<<<<<
@@ -2680,7 +2683,7 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
  */
           __pyx_v_y_s = ((__pyx_v_cell_y * __pyx_v_y) + __pyx_v_j);
 
-          /* "grad_hist.pyx":75
+          /* "grad_hist.pyx":102
  * 					x_s = cell_x*x + i
  * 					y_s = cell_y*y + j
  * 					grad_p[x, y] += grad[x_s,y_s]             # <<<<<<<<<<<<<<
@@ -2697,19 +2700,19 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
     }
   }
 
-  /* "grad_hist.pyx":76
+  /* "grad_hist.pyx":103
  * 					y_s = cell_y*y + j
  * 					grad_p[x, y] += grad[x_s,y_s]
  * 	return np.asarray(grad_p)             # <<<<<<<<<<<<<<
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_asarray); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_grad_p, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_grad_p, 2, (PyObject *(*)(char *)) __pyx_memview_get_float, (int (*)(char *, PyObject *)) __pyx_memview_set_float, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_2 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -2722,17 +2725,17 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_5);
   } else {
-    __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -2741,12 +2744,12 @@ static PyObject *__pyx_pf_9grad_hist_4sum_pool_grad(CYTHON_UNUSED PyObject *__py
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "grad_hist.pyx":57
+  /* "grad_hist.pyx":76
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_grad(float[:,::1] grad, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = grad.shape[0]
+ * 	"""
+ * 	Does pooling over cell_x by cell_y regions of gradient magnitude. Basically the same as sum_pool_frame,
  */
 
   /* function exit code */
@@ -15073,7 +15076,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_grad_hist, __pyx_k_grad_hist, sizeof(__pyx_k_grad_hist), 0, 0, 1, 1},
   {&__pyx_n_s_grad_p, __pyx_k_grad_p, sizeof(__pyx_k_grad_p), 0, 0, 1, 1},
   {&__pyx_n_s_h, __pyx_k_h, sizeof(__pyx_k_h), 0, 0, 1, 1},
-  {&__pyx_kp_s_home_nolsman_PycharmProjects_FC, __pyx_k_home_nolsman_PycharmProjects_FC, sizeof(__pyx_k_home_nolsman_PycharmProjects_FC), 0, 0, 1, 0},
+  {&__pyx_kp_s_home_lane_Development_computer, __pyx_k_home_lane_Development_computer, sizeof(__pyx_k_home_lane_Development_computer), 0, 0, 1, 0},
   {&__pyx_n_s_hx, __pyx_k_hx, sizeof(__pyx_k_hx), 0, 0, 1, 1},
   {&__pyx_n_s_hy, __pyx_k_hy, sizeof(__pyx_k_hy), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
@@ -15126,7 +15129,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 30, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 131, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 146, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(1, 149, __pyx_L1_error)
@@ -15294,36 +15297,36 @@ static int __Pyx_InitCachedConstants(void) {
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def grad_hist(int[:,::1] tf, int[:,::1] tc, float[:,::1] rf, float[:,::1] rc,             # <<<<<<<<<<<<<<
  * 			  int cell_x, int cell_y, int n_bins):
- * 	cdef:
+ * 	"""
  */
   __pyx_tuple__14 = PyTuple_Pack(18, __pyx_n_s_tf, __pyx_n_s_tc, __pyx_n_s_rf, __pyx_n_s_rc, __pyx_n_s_cell_x, __pyx_n_s_cell_y, __pyx_n_s_n_bins, __pyx_n_s_xmax, __pyx_n_s_ymax, __pyx_n_s_hx, __pyx_n_s_hy, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_x_s, __pyx_n_s_y_s, __pyx_n_s_h); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(7, 0, 18, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nolsman_PycharmProjects_FC, __pyx_n_s_grad_hist, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(7, 0, 18, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_lane_Development_computer, __pyx_n_s_grad_hist, 7, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 7, __pyx_L1_error)
 
-  /* "grad_hist.pyx":32
+  /* "grad_hist.pyx":43
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_frame(int[:,:,::1] frame, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = frame.shape[0]
+ * 	"""
+ * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(15, __pyx_n_s_frame, __pyx_n_s_cell_x, __pyx_n_s_cell_y, __pyx_n_s_xmax, __pyx_n_s_ymax, __pyx_n_s_chans, __pyx_n_s_hx, __pyx_n_s_hy, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_x_s, __pyx_n_s_y_s, __pyx_n_s_frame_p); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(15, __pyx_n_s_frame, __pyx_n_s_cell_x, __pyx_n_s_cell_y, __pyx_n_s_xmax, __pyx_n_s_ymax, __pyx_n_s_chans, __pyx_n_s_hx, __pyx_n_s_hy, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_x_s, __pyx_n_s_y_s, __pyx_n_s_frame_p); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 15, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nolsman_PycharmProjects_FC, __pyx_n_s_sum_pool_frame, 32, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 15, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_lane_Development_computer, __pyx_n_s_sum_pool_frame, 43, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 43, __pyx_L1_error)
 
-  /* "grad_hist.pyx":57
+  /* "grad_hist.pyx":76
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_grad(float[:,::1] grad, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = grad.shape[0]
+ * 	"""
+ * 	Does pooling over cell_x by cell_y regions of gradient magnitude. Basically the same as sum_pool_frame,
  */
-  __pyx_tuple__18 = PyTuple_Pack(15, __pyx_n_s_grad, __pyx_n_s_cell_x, __pyx_n_s_cell_y, __pyx_n_s_xmax, __pyx_n_s_ymax, __pyx_n_s_chans, __pyx_n_s_hx, __pyx_n_s_hy, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_x_s, __pyx_n_s_y_s, __pyx_n_s_grad_p); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(15, __pyx_n_s_grad, __pyx_n_s_cell_x, __pyx_n_s_cell_y, __pyx_n_s_xmax, __pyx_n_s_ymax, __pyx_n_s_chans, __pyx_n_s_hx, __pyx_n_s_hy, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_x_s, __pyx_n_s_y_s, __pyx_n_s_grad_p); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(3, 0, 15, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nolsman_PycharmProjects_FC, __pyx_n_s_sum_pool_grad, 57, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(3, 0, 15, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_lane_Development_computer, __pyx_n_s_sum_pool_grad, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 76, __pyx_L1_error)
 
   /* "View.MemoryView":282
  *         return self.name
@@ -15539,35 +15542,35 @@ PyMODINIT_FUNC PyInit_grad_hist(void)
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def grad_hist(int[:,::1] tf, int[:,::1] tc, float[:,::1] rf, float[:,::1] rc,             # <<<<<<<<<<<<<<
  * 			  int cell_x, int cell_y, int n_bins):
- * 	cdef:
+ * 	"""
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9grad_hist_1grad_hist, NULL, __pyx_n_s_grad_hist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_grad_hist, __pyx_t_1) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grad_hist.pyx":32
+  /* "grad_hist.pyx":43
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_frame(int[:,:,::1] frame, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = frame.shape[0]
+ * 	"""
+ * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9grad_hist_3sum_pool_frame, NULL, __pyx_n_s_grad_hist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9grad_hist_3sum_pool_frame, NULL, __pyx_n_s_grad_hist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sum_pool_frame, __pyx_t_1) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sum_pool_frame, __pyx_t_1) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "grad_hist.pyx":57
+  /* "grad_hist.pyx":76
  * @cython.boundscheck(False) # turn off bounds-checking for entire function
  * @cython.wraparound(False)  # turn off negative index wrapping for entire function
  * def sum_pool_grad(float[:,::1] grad, int cell_x, int cell_y):             # <<<<<<<<<<<<<<
- * 	cdef:
- * 		int xmax = grad.shape[0]
+ * 	"""
+ * 	Does pooling over cell_x by cell_y regions of gradient magnitude. Basically the same as sum_pool_frame,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9grad_hist_5sum_pool_grad, NULL, __pyx_n_s_grad_hist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9grad_hist_5sum_pool_grad, NULL, __pyx_n_s_grad_hist); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sum_pool_grad, __pyx_t_1) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sum_pool_grad, __pyx_t_1) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "grad_hist.pyx":1

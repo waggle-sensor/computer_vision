@@ -10,18 +10,21 @@ def load_images():
     Loads unscaled pedestrian frames, returns the feature channels for the frames at original and half scale.
     TODO: generalize to arbitrary scaling
     """
+    images = []
     frames = []
     frames_s = []
-    pos_dir = '/media/nolsman/TRANSCEND/data/train/positive_unscaled'
+    #pos_dir = '/media/nolsman/TRANSCEND/data/train/positive_unscaled'
+    pos_dir = '/home/lane/Development/computer_vision/images'
 
     for fname in glob.glob(pos_dir + '/*'):
         img = cv2.imread(fname)
-        img_s = cf.compute_chans(cv2.pyrDown(img))
-        img = cf.compute_chans(img)
-        frames.append(img)
-        frames_s.append(img_s)
+        channels = cf.compute_chans(img)
+        channels_s = cf.compute_chans(cv2.pyrDown(img))
+        frames.append(channels)
+        frames_s.append(channels_s)
+        images.append(img)
 
-    return frames, frames_s
+    return images, frames, frames_s
 
 
 def compute_lambdas(frames, frames_s):
@@ -62,12 +65,16 @@ def scale_chans(frame, s, lambdas):
 
 
 if __name__ == '__main__':
-    frames, frames_s = load_images()
+    images, frames, frames_s = load_images()
+    print(len(frames))
     lambdas = compute_lambdas(frames, frames_s)
-    ft = frames[10]
-    print(frames_s[10].shape)
+    #frame_index = 10
+    frame_index = 7
+    ft = frames[frame_index]
+    print(frames_s[frame_index].shape)
+    cv2.imshow('image', images[frame_index])
     test = scale_chans(ft, 1/2, lambdas)
     cv2.imshow('scaled', test[9, :, :]/(16*255))
-    cv2.imshow('real', frames_s[10][:, :, 9]/(16*255))
+    cv2.imshow('real', frames_s[frame_index][:, :, 9]/(16*255))
     cv2.waitKey(0)
     print(lambdas)

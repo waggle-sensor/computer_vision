@@ -1,4 +1,6 @@
 import cv2
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 import numpy as np
 import time
 import grad_hist
@@ -103,30 +105,36 @@ def gen_gradient():
 
 
 def main():
-    img = cv2.imread('test.png')
+    img = cv2.imread('images/test.png')
     # img = cv2.cvtColor(img, cv2.COLOR_BGR2LUV)
     # img = cv2.resize(img, (640, 480))
     # img = gen_gradient()
     # (h, w) = img.shape[:2]
     # center = (w / 2, h / 2)
-    # cv2.imshow('image', img/255)
-    # cv2.waitKey(2000)
+    cv2.imshow('image', img/255)
+    cv2.waitKey(2000)
     np.set_printoptions(precision=4)
     np.set_printoptions(threshold=np.nan)
-    print(img.shape)
+    print("Image Shape: ", img.shape)
     start = time.time()
     for i in range(200):
         # print(i)
-        # h, r = hog(img[:, :, 0])
+        h, r = hog(img[:, :, 0])
         # print(r.shape)
-        # r_s = grad_hist.sum_pool_grad(r, np.int32(4), np.int32(4))
+        r_s = grad_hist.sum_pool_grad(r, np.int32(4), np.int32(4))
         feat_vec = compute_chans(img)
-        # print(feat_vec.shape)
-    print(200 / (time.time() - start))
-    # cv2.imshow('frame1', r_s/(16*255))
+    print("HOG Performance: ", 200 / (time.time() - start), "frames/s")
+    print("Feature Vector Shape: ", feat_vec.shape)
+
+    # Display the sum pooled histogram of gradients magnitudes
+    #cv2.imshow('frame1', r_s/(16*255))
+    cv2.imshow('frame1', feat_vec[:,:,9]/(16*255))
+
+    # Display the scaled histogram of gradients magnitudes
     # cv2.imshow('frame2', cv2.cvtColor(img,cv2.COLOR_LUV2BGR))
-    # cv2.imshow('frame2', r/255)
-    # cv2.waitKey(0)
+    cv2.imshow('frame2', r/255)
+    cv2.waitKey(0)
+
     # hog(img)
     # h = hog(img[:, :, 0])
     # print(h)
