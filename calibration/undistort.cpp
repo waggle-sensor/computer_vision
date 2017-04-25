@@ -17,7 +17,7 @@ using namespace std;
 
 int main( int argc, char** argv )
 {
-    const char* calibration_filename = "camera.yml";
+    const char* calibration_filename = "calibration170.yml";
     FileStorage fs(calibration_filename, FileStorage::READ);
     if( !fs.isOpened() )
         return false;

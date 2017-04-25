@@ -1,3 +1,4 @@
+set(OpenCV_FOUND 1)
 # cmake needs this line
 cmake_minimum_required(VERSION 2.8)
 
@@ -22,8 +23,8 @@ message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 # Declare the executable target built from your sources
-add_executable(imagelist_creator ../imagelist_creator.cpp)
-add_executable(calibration ../calibration.cpp)
+add_executable(imagelist_creator imagelist_creator.cpp)
+add_executable(calibration calibration.cpp)
 add_executable(undistort undistort.cpp)
 
 # Link your application with OpenCV libraries
