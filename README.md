@@ -32,7 +32,7 @@ Much of all the training and processing code relies on the training data from th
 
 The first step in any classification/detection pipeline is feature extraction, assuming that your data wasn't already structured such that the features were already naturally represented. 
 
-![Features](/readme-images/features.png)
+![Features](./readme-images1/features.png)
 **Figure 1:** a typical example of feature extraction. Image from Dollar et. al 2014, IPAM
 
 While there are many classes of features that can be extracted, a few have emerged as being robust for object detection. Higher-level filtering can be done on these features, as can be seen in the Filtered Channel Features paper, but
@@ -76,7 +76,7 @@ def compute_grad(img):
 ###2.3 Histogram of Oriented Gradients (HOG)
 While there is a great deal of useful information in the gradient magnitude, it doesn't tell the whole story. As you may have guess from the previous section, the orientation can also play a crucial role. Take Figure 2, if we tried to classify it purely based on gradient magnitude, we would lose all information about the geometry of the shape. If, however, we tracked both the gradient magnitude and direction, we would easily be able to detect the unique features corresponding to the eight edges in the image.
 
-![Octagon](/readme-images/octagon-512.gif)
+![Octagon](./readme-images1/octagon-512.gif)
 
 **Figure 2**
 
@@ -85,7 +85,7 @@ This is where the idea of a Histogram of Oriented Gradient (HOG) feature comes i
 For example, if one of the 16 entries in the grad has ```r = 1``` and ```theta = 60```, then we would add .34 to the 0 degrees bin and .66 to the 90 degrees bin. Doing this for each of the entries in the grid, we get a histogram of orentied gradients feature. This is a very compact representation, as the original 4x4 grid had 4x4x2 = 32 floating point numbers, and the HOG has only N numbers (where N is the number of bins).
 
 
-![HOG](/readme-images/hog.png)
+![HOG](./readme-images1/hog.png)
 
 **Figure 3:** Histogram of Oriented Gradients on 4x4 grids.
 
@@ -127,7 +127,7 @@ With all this in place, we can simply call the function ```compute_chans()``` to
 ###2.5 Filtered Channles (future work)
 So far we've discussed what we might think of as core features, which fit into a framework that Dollar *et al.* refer to as Aggregated Channel Features (ACF). While we can do classification directly on these features, one might imagine that further processing on the features may improve detection, in the same way that adding gradient features improves on the original color features. Zhang *et al.* showed that accuracy can be improved with Filtered Channel Features (FCF). Zhang tested a variety of filters, and found that a class they call Checkerboard filters yieled the greatest improvement.
 
-![Frame](/readme-images/filters.png)
+![Frame](./readme-images1/filters.png)
 
 **Figure 4:**  Examples of filters tested by Zhang *et al.*
 
@@ -139,13 +139,13 @@ The downside is that more filters means a larger feature vector per frame, which
 ###3.1 Data Processing
 Training is performed on the Caltech Pedestrian Detection Data Set mentioned in the introduction. The code to process the raw data is in ```process_data.py```, however if you are working from the directories I made you should not ever have to deal with this script because the relevent data is extracted elsewhere in the directory ```data\train\```. Because many adjacent frames are extremely similar, the data set is defined to consist of every 30th frame from all the videos.
 
-![Frame](/readme-images/frame.png)
+![Frame](./readme-images1/frame.png)
 
 **Figure 5:** An example of a 640x480 frame from the Caltech data set.
 
 The folder ```positive``` contains all the windows containing pedestrians, extracted from the raw images and resized to 64x128 for training purposes. ```positive_unscaled``` contains the same images, just not resized. The former is useful for training, the latter is useful for computing feature pyramids (described later). Note that we filter some of the positives, as it has been found that samples that are too small (say less than 50 pixels in height) become too distorted to be useful for training.
 
-![Frame](/readme-images/pedestrian.png)
+![Frame](./readme-images1/pedestrian.png)
 
 **Figure 6:** An example of a 64x128 pedestrian image from the Caltech data set.
 
@@ -209,7 +209,7 @@ An alternative is to implement adaboost from scratch and to build this functiona
 
 Throughout the discussion so far, we've taken for granted the assumption of a fixed model size, i.e. 64x128 windows. Obviously it won't be the case that every pedestrian happens to fit precisely in this window, so it is necessary to do detection at multiple scales. This is where the idea of image pyramids come in, where we can use the same model size and simply resize the image to multiple scales. The naive implementation is simple, you simple interpolate the image up and down at say 24 scales, and then do object detection at each one. 
 
-![Frame](/readme-images/pyramids.png)
+![Frame](./readme-images1/pyramids.png)
 
 **Figure 7:** Image pyramids, from Dollar *et al.*
 
