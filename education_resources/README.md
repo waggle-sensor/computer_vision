@@ -12,6 +12,10 @@ This page lists educational resources including tips and tutorials for machine l
 
 [The source video](https://youtu.be/EbRQMncZ5XY?t=3735) talks about how AI algorithms can be modeled, packaged, managed, and possible to be running at the edge devices. A couple of examples helps how the Edge computing can be applied to scale-sensitive domains.
 
+* Amazon Greengrass for Edge computing
+
+[The source video](https://www.youtube.com/watch?v=EAz-qAL5z2U) talks about Amazon's Edge computing environment, using their existing services such as Lambda and cloud. The concept is almost identifcal to Waggle's Edge computing concept. This will help formulate a shape of how Waggle Edge computing environment would look like.
+
 ### Dataset management
 
 * Data Visualization and Debugging
