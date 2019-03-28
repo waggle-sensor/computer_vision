@@ -4,7 +4,13 @@ waggle_topic=/edge_processor,AI at Edge Resources and Tutorials
 
 ## AI at the Edge Resources and Tutorials
 
-This page lists educational resources including tips and tutorials for machine learning starters. 
+This page lists educational resources including tips and tutorials for machine learning starters.
+
+### Concepts
+
+* Microsoft Azure IoT Edge
+
+[The source video](https://youtu.be/EbRQMncZ5XY?t=3735) talks about how AI algorithms can be modeled, packaged, managed, and possible to be running at the edge devices. A couple of examples helps how the Edge computing can be applied to scale-sensitive domains.
 
 ### Dataset management
 
