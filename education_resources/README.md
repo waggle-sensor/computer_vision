@@ -4,7 +4,7 @@ waggle_topic=/edge_processor,AI at Edge Resources and Tutorials
 
 ## AI at the Edge Resources and Tutorials
 
-This page lists educational resources including tips and tutorials for machine learning starters.
+This page lists educational resources including tips and tutorials for machine learning starters for Edge Computing.
 
 ### Concepts
 
@@ -14,7 +14,7 @@ This page lists educational resources including tips and tutorials for machine l
 
 * Amazon Greengrass for Edge computing
 
-[The source video](https://www.youtube.com/watch?v=EAz-qAL5z2U) talks about Amazon's Edge computing environment, using their existing services such as Lambda and cloud. The concept is almost identifcal to Waggle's Edge computing concept. This will help formulate a shape of how Waggle Edge computing environment would look like.
+[The source video](https://www.youtube.com/watch?v=EAz-qAL5z2U) talks about Amazon's Edge computing environment, using their existing services such as Lambda and cloud. The concept is almost identifcal to Waggle's Edge computing concept. This will help formulate a shape of how Waggle Edge computing environment would look like. [Additional resource for Amazon Greengrass with ML at the edge](https://www.youtube.com/watch?v=D0XySEVBUZE).
 
 ### Dataset management
 
@@ -27,3 +27,9 @@ This page lists educational resources including tips and tutorials for machine l
 * Adversarial Examples and Their Implications
 
 [The post](https://hackernoon.com/the-implications-of-adversarial-examples-deep-learning-bits-3-4086108287c7) talks about the possible attacks against Deeplearning-based systems. In the post, identity verification systems and self-driving vehicle systems are the systems mainly critical to those attacks. 
+
+### Technical tools
+
+* AWS Deep Learning AMIs
+
+[Visit their website](https://aws.amazon.com/machine-learning/amis/)
